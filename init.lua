@@ -5,7 +5,8 @@ vim.cmd([[ source ~/.config/nvim/vimrc ]])
 -- 1. Instalador de lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+  vim.fn.system({ "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -13,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { "neovim/nvim-lspconfig" }, -- Sigue siendo útil para las definiciones de servidores
   { "williamboman/mason.nvim", opts = {} },
-  { 
+  {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
@@ -26,6 +27,7 @@ require("lazy").setup({
   },
   { "ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" }, opts = {} },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...}
 })
 
 -- 3. Configuración NATIVA de LSP (Neovim 0.11+)
@@ -38,7 +40,6 @@ vim.env.PATH = mason_bin .. ":" .. vim.env.PATH
 local function setup_native(server_name, opts)
   opts = opts or {}
   opts.capabilities = vim.tbl_deep_extend('force', capabilities, opts.capabilities or {})
-  
   -- La nueva forma: habilitamos el servidor directamente en el core
   -- Esto utiliza las configuraciones predefinidas de nvim-lspconfig pero con la API nueva
   vim.lsp.config(server_name, opts)
@@ -69,3 +70,31 @@ setup_native("bashls", {})
 vim.opt.number = true
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+
+-- COLOR
+vim.o.background = "dark" -- or "light" for light mode
+-- Default options:
+require("gruvbox").setup({
+  terminal_colors = true, -- add neovim terminal colors
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = {
+    strings = true,
+    emphasis = true,
+    comments = true,
+    operators = false,
+    folds = true,
+  },
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+vim.cmd([[colorscheme gruvbox]])

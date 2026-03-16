@@ -69,7 +69,7 @@ set showmode
 
 set history=1000
 
-set undodir=~/.vim/backup
+set undodir=~/.config/nvim/backup
 set undofile
 set undoreload=10000
 
@@ -268,95 +268,6 @@ let g:netrw_winsize=-20
     " - edit a folder to open a file browser
     " - <CR>/v/t to open in an h-split/v-split/tab
     " - check |netrw-browse-maps| for more mappings
-" }}}
-
-" STYLE {{{
-syntax enable
-
-" Use a line cursor within insert mode and a block cursor everywhere else.
-    "   Reference chart of values:
-    "   Ps = 0  -> blinking block.
-    "   Ps = 1  -> blinking block (default).
-    "   Ps = 2  -> steady block.
-    "   Ps = 3  -> blinking underline.
-    "   Ps = 4  -> steady underline.  "   Ps = 5  -> blinking bar (xterm).
-    "   Ps = 6  -> steady bar (xterm).
-let &t_SI = "\e[6 q"
-let &t_SR = "\e[3 q"
-let &t_EI = "\e[2 q"
-
-set t_Co=256
-set termguicolors
-colorscheme default
-set background=dark
-
-" rosewater = #F2D5CF
-" flamingo = #EEBEBE
-" pink = #F4B8E4
-" mauve = #CA9EE6
-" red = #E78284
-" maroon = #EA999C
-" peach = #EF9F76
-" yellow = #E5C890
-" green = #A6D189
-" teal = #81C8BE
-" sky = #99D1DB
-" sapphire = #85C1DC
-" blue = #8CAAEE
-" lavender = #BABBF1
- 
-" text = #C6D0F5
-" subtext1 = #B5BFE2
-" subtext0 = #A5ADCE
-" overlay2 = #949CBB
-" overlay1 = #838BA7
-" overlay0 = #737994
-" surface2 = #626880
-" surface1 = #51576D
-" surface0 = #414559
-
-" base = #303446
-" mantle = #292C3C
-" crust = #232634
-
-highlight ColorColumn guibg=#737994
-highlight Comment cterm=italic guifg=#CA9EE6
-highlight Constant guifg=#F4B8E4
-highlight CurSearch guifg=#303446 guibg=#EA999C 
-highlight CursorLine cterm=none guibg=#51576D
-highlight CursorLineNr cterm=bold,italic guifg=#85C1DC guibg=#414559
-highlight Error cterm=bold,italic guifg=#F2D5CF guibg=#EA999C
-highlight ErrorMsg cterm=bold,italic guifg=#F2D5CF guibg=#EA999C
-highlight FoldColumn guifg=#737994 guibg=#EEBEBE
-highlight Folded cterm=bold,italic guifg=#414559 guibg=#EEBEBE
-highlight Identifier cterm=bold guifg=#99D1DB
-highlight IncSearch guifg=#303446 guibg=#F2D5CF 
-highlight LineNr guifg=#414559 guibg=#CA9EE6
-highlight MatchParen guifg=#303446 guibg=#EA999C
-highlight NonText guifg=#737994 guibg=#303446
-highlight Normal guifg=#C6D0F5 guibg=#303446
-highlight Pmenu guifg=#414559 guibg=#CA9EE6
-highlight PmenuSel guifg=#303446 guibg=#EEBEBE
-highlight PmenuSBar guibg=#414559
-highlight PmenuThumb guibg=#85C1DC 
-highlight PreProc guifg=#99D1DB
-highlight Search guifg=#303446 guibg=#F2D5CF
-highlight Special guifg=#E5C890
-highlight Statement guifg=#EEBEBE
-highlight StatusLine guibg=#303446 guifg=#EEBEBE
-highlight StatusLineNC guibg=#303446 guifg=#CA9EE6
-highlight StatusLineTerm guifg=#303446 guibg=#EEBEBE
-highlight StatusLineTermNC cterm=italic guifg=#303446 guibg=#EEBEBE
-highlight TabLine cterm=none guifg=#303446 guibg=#EEBEBE
-highlight TabLineFill guifg=#EEBEBE
-highlight TabLineSel cterm=bold,italic guifg=#232634 guibg=#CA9EE6
-highlight Title guifg=#232634
-highlight Type cterm=bold guifg=#A6D189
-highlight Underlined guifg=#E78284
-highlight VertSplit guifg=#CA9EE6
-highlight Visual guibg=SlateGray
-highlight WildMenu cterm=bold guifg=#85C1DC guibg=#303446
-
 " }}}
 
 "" NICE TO KNOW {{{
