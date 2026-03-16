@@ -144,7 +144,7 @@ nnoremap <leader>fm :marks<CR>:normal! `
 nnoremap <leader>fr :reg<CR>:normal! "
 nnoremap <leader>ft :tags<CR>
 nnoremap <leader>fu :undolist<CR>:u<space>
-nnoremap <leader>fv :find ~/.vim/vimrc<CR>
+nnoremap <leader>fv :find ~/.config/nvim/vimrc<CR>
 
 nnoremap <leader>gd *<c-]>n:nohl<CR>zz
 

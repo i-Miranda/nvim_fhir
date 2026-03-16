@@ -2,11 +2,7 @@
 vim.env.CFLAGS = "-O0"
 
 -- Set rtp for vim flags
- vim.cmd([[
- set runtimepath^=~/.vim
- let &packpath = &runtimepath
- source ~/.vim/vimrc
- ]])
+ vim.cmd([[ source vimrc ]])
 
 -- 1. instalador de lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
