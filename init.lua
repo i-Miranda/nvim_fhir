@@ -11,7 +11,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- 2. Plugins
 require("lazy").setup({
-  { "neovim/nvim-lspconfig" }, 
+  { "neovim/nvim-lspconfig" }, -- Sigue siendo útil para las definiciones de servidores
   { "williamboman/mason.nvim", opts = {} },
   { 
     "hrsh7th/nvim-cmp",
@@ -24,54 +24,48 @@ require("lazy").setup({
       })
     end
   },
-  { "ibhagwan/fzf-lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {} 
-    },
+  { "ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" }, opts = {} },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 })
 
--- 3. Configuración LSPs (Neovim 0.11 Ready)
-local lspconfig = require('lspconfig')
+-- 3. Configuración NATIVA de LSP (Neovim 0.11+)
+-- En lugar de require('lspconfig'), usamos el nuevo sistema de plantillas
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local mason_bin = vim.fn.stdpath("data") .. "/mason/bin/"
-
--- Actualizamos el PATH del sistema para que Neovim encuentre los ejecutables de Mason
 vim.env.PATH = mason_bin .. ":" .. vim.env.PATH
 
---- Ayudante para configurar servidores de forma limpia
-local function setup(server, config)
-  config = config or {}
-  config.capabilities = capabilities
-  lspconfig[server].setup(config)
+-- Función para activar servidores usando vim.lsp.config
+local function setup_native(server_name, opts)
+  opts = opts or {}
+  opts.capabilities = vim.tbl_deep_extend('force', capabilities, opts.capabilities or {})
+  
+  -- La nueva forma: habilitamos el servidor directamente en el core
+  -- Esto utiliza las configuraciones predefinidas de nvim-lspconfig pero con la API nueva
+  vim.lsp.config(server_name, opts)
+  vim.lsp.enable(server_name)
 end
 
--- LUA
-setup("lua_ls", {
+-- Configuración de servidores específicos
+setup_native("lua_ls", {
   settings = { Lua = { diagnostics = { globals = {'vim'} } } }
 })
 
--- C# (Omnisharp)
--- Nota: Omnisharp suele requerir el ejecutable 'omnisharp' en minúsculas en Linux/macOS
-setup("omnisharp", {
-  cmd = { "omnisharp" }, 
+setup_native("omnisharp", {
+  -- Mason instala Omnisharp.cmd en Windows o omnisharp en Unix
+  cmd = { "omnisharp" },
   settings = {
     RoslynExtensionsOptions = { enableImportCompletion = true }
   }
 })
 
--- SQL
-setup("sqlls", {
-  filetypes = { "sql", "mysql" },
-  root_dir = function() return vim.uv.cwd() end,
+setup_native("sqlls", {
+  filetypes = { "sql", "mysql" }
 })
 
--- BASH
-setup("bashls", {
-  filetypes = { "sh", "bash" },
-})
+setup_native("bashls", {})
 
 -- 4. Opciones de editor
+-- (Tus opciones se mantienen igual)
 vim.opt.number = true
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
