@@ -135,7 +135,7 @@ nnoremap <leader>tp :tabprev<CR>
 nnoremap <leader>tq :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 
-nnoremap <leader>ff :FZF<CR>
+nnoremap <leader>ff :FzfLua files<CR>
 nnoremap <leader>fz :find<space>
 nnoremap <leader>fb :ls<CR>:b<space>
 nnoremap <leader>fo :Lexplore<CR>:wincmd L<CR>21<c-w><CR>
@@ -145,6 +145,7 @@ nnoremap <leader>fr :reg<CR>:normal! "
 nnoremap <leader>ft :tags<CR>
 nnoremap <leader>fu :undolist<CR>:u<space>
 nnoremap <leader>fv :find ~/.config/nvim/vimrc<CR>
+nnoremap <leader>fn :find ~/.config/nvim/init.lua<CR>
 
 nnoremap <leader>gd *<c-]>n:nohl<CR>zz
 
