@@ -118,9 +118,17 @@ setup_native("roslyn", {
         print("This will run when the server attaches!")
     end,
     settings = {
+        ["csharp|completion"] = {
+            -- This allows you to see types even if you haven't added 'using'
+            -- that namespace yet.
+            dotnet_show_completion_items_from_unimported_namespaces = true,
+            dotnet_provide_regex_completions = true,
+        },
         ["csharp|inlay_hints"] = {
             csharp_enable_inlay_hints_for_implicit_object_creation = true,
             csharp_enable_inlay_hints_for_implicit_variable_types = true,
+            csharp_enable_inlay_hints_for_types = true,
+            csharp_enable_inlay_hints_for_parameters = true,
         },
         ["csharp|code_lens"] = {
             dotnet_enable_references_code_lens = true,
