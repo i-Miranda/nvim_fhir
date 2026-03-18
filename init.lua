@@ -142,12 +142,6 @@ setup_native("sqlls", {
 
 setup_native("bashls", {})
 
--- 4. Opciones de editor
--- (Tus opciones se mantienen igual)
-vim.opt.number = true
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
 -- COLOR
 vim.o.background = "dark" -- or "light" for light mode
 -- Default options:
