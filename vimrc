@@ -146,6 +146,8 @@ nnoremap <leader>ft :tags<CR>
 nnoremap <leader>fu :undolist<CR>:u<space>
 nnoremap <leader>fv :find ~/.config/nvim/vimrc<CR>
 nnoremap <leader>fn :find ~/.config/nvim/init.lua<CR>
+nnoremap <leader>fc :find ~/.bashrc<CR>
+nnoremap <leader>fx :find ~/.config/tmux/tmux.conf<CR>
 
 nnoremap <leader>gd *<c-]>n:nohl<CR>zz
 
