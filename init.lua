@@ -1,8 +1,8 @@
 -- 0. Variables de entorno y compatibilidad
 vim.env.CFLAGS = "-O0"
 vim.cmd([[ source ~/.config/nvim/vimrc ]])
-
 vim.cmd([[ let g:browser='qutebrowser' ]])
+vim.opt.termguicolors = true
 
 -- 1. Instalador de lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
