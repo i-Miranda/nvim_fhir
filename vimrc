@@ -75,7 +75,8 @@ set undoreload=10000
 
 set wildmenu
 set wildmode=longest:list,full
-set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+set wildignore=*.o,*.obj,*.so,*.dll,*.pyc,*.pyo,*.class,*.jar,*.war,*.ear,*.exe,*.out,*.bin,*.log,*.cache,*.tmp,*.swp,*.swo,*.swn,*/node_modules/*,*/dist/*,*/build/*,*/target/*,*/.venv/*,*/venv/*,*/.pytest_cache/*,*/__pycache__/*,*/.cache/*,*/.DS_Store,*/.git/*
+
 
 "KEYMAPS {{{
 nnoremap <space> <Nop>
@@ -93,6 +94,9 @@ vnoremap L Lzz
 nnoremap gg ggzzzv
 nnoremap gd gdzzzv:nohlsearch<CR>
 nnoremap gD gDzzzv:nohlsearch<CR>
+nnoremap G Gzzzv
+nnoremap <c-d> <c-d>zzzv
+nnoremap <c-u> <c-u>zzzv
 
 nnoremap o o<esc>
 nnoremap O O<esc>
