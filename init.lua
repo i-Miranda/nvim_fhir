@@ -170,11 +170,19 @@ setup_native("roslyn", {
 	},
 })
 
+setup_native("clangd", {
+	filetypes = { "c", "h", "cpp", "hpp" }
+})
+
 setup_native("sqlls", {
 	filetypes = { "sql", "mysql" },
 })
 
 setup_native("bashls", {})
+
+setup_native("asm-lsp", {
+	filetypes = { "asm", "s", "S" },
+})
 
 -- COLOR
 vim.o.background = "dark" -- or "light" for light mode
