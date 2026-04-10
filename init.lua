@@ -83,9 +83,9 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ "ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" }, opts = {} },
+	{ "ibhagwan/fzf-lua",                dependencies = { "nvim-tree/nvim-web-devicons" }, opts = {} },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
+	{ "ellisonleao/gruvbox.nvim",        priority = 1000,                                  config = true, opts = ... },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -96,6 +96,10 @@ require("lazy").setup({
 		cmd = { "ConformInfo" },
 		opts = {
 			formatters_by_ft = {
+				javascript = { "biome" },
+				typescript = { "biome" },
+				html = { "htmlbeautifier" },
+				css = { "biome" },
 				cs = { "csharpier" },
 				lua = { "stylua" },
 			},
@@ -104,6 +108,15 @@ require("lazy").setup({
 				lsp_format = "fallback", -- If csharpier fails, try the LSP
 			},
 		},
+	},
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
 	},
 })
 
