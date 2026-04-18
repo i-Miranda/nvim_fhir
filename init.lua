@@ -126,6 +126,19 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local mason_bin = vim.fn.stdpath("data") .. "/mason/bin/"
 vim.env.PATH = mason_bin .. ":" .. vim.env.PATH
 
+-- enable inline diagnostics globally (show errors + warnings)
+vim.diagnostic.config({
+	virtual_text = {
+		severity = { min = vim.diagnostic.severity.WARN },
+		format = function(d)
+			return d.message
+		end,
+	},
+	signs = true,
+	underline = true,
+	float = { border = "rounded" },
+})
+
 -- Función para activar servidores usando vim.lsp.config
 local function setup_native(server_name, opts)
 	opts = opts or {}
