@@ -1,3 +1,5 @@
 backup/
 
 *.swp
+
+lazy-lock.json
