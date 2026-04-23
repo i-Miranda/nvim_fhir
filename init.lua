@@ -83,9 +83,18 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ "ibhagwan/fzf-lua",                dependencies = { "nvim-tree/nvim-web-devicons" }, opts = {} },
+	{
+		"ibhagwan/fzf-lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			files = {
+				no_ignore = true,
+				hidden = true,
+			},
+		},
+	},
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{ "ellisonleao/gruvbox.nvim",        priority = 1000,                                  config = true, opts = ... },
+	{ "ellisonleao/gruvbox.nvim",        priority = 1000,    config = true, opts = ... },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
