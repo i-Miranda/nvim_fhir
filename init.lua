@@ -193,7 +193,8 @@ setup_native("roslyn", {
 })
 
 setup_native("clangd", {
-	filetypes = { "c", "h", "cpp", "hpp" }
+	filetypes = { "c", "h", "cpp", "hpp" },
+	cmd = { "clangd", "--compile-commands-dir=build" },
 })
 
 setup_native("sqlls", {
