@@ -20,6 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- 2. Plugins
 require("lazy").setup({
+	{ "42paris/42header" },   -- Sigue siendo útil para las definiciones de servidores
 	{ "neovim/nvim-lspconfig" }, -- Sigue siendo útil para las definiciones de servidores
 	{ "williamboman/mason.nvim", opts = {} },
 	{

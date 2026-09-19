@@ -214,6 +214,12 @@ augroup cursor_off
     autocmd WinEnter * set cursorline 
 augroup END
 
+" ADDING TPP as a filetype"
+augroup custom_filetypes
+	autocmd!
+	autocmd BufRead,BufNewFile *.tpp set filetype=cpp
+augroup END
+
 "Create the 'tags' file.  (ctags required: brew install ctags)
 command! MakeTags !ctags -R .
     "NOW WE CAN:
@@ -222,7 +228,7 @@ command! MakeTags !ctags -R .
     " - Use t^ to jump back up the tag stack
 " }}}
 
-" C SPECIFIC {{{
+" C/C++ SPECIFIC {{{
 " this isn't working
 syn keyword cType t_list
 " this is
