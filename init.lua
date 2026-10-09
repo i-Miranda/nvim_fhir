@@ -20,7 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- 2. Plugins
 require("lazy").setup({
-	{ "42paris/42header" },   -- Sigue siendo útil para las definiciones de servidores
+	{ "42paris/42header" }, -- Sigue siendo útil para las definiciones de servidores
 	{ "neovim/nvim-lspconfig" }, -- Sigue siendo útil para las definiciones de servidores
 	{ "williamboman/mason.nvim", opts = {} },
 	{
@@ -95,7 +95,7 @@ require("lazy").setup({
 		},
 	},
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{ "ellisonleao/gruvbox.nvim",        priority = 1000,    config = true, opts = ... },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -106,12 +106,21 @@ require("lazy").setup({
 		cmd = { "ConformInfo" },
 		opts = {
 			formatters_by_ft = {
+				c = { "clang_format" },
+				cpp = { "clang_format" },
 				javascript = { "biome" },
 				typescript = { "biome" },
 				html = { "htmlbeautifier" },
 				css = { "biome" },
 				cs = { "csharpier" },
 				lua = { "stylua" },
+			},
+			formatters = {
+				clang_format = {
+					prepend_args = {
+						"--style={BasedOnStyle: LLVM, Standard: c++03}", -- std++98 formatting
+					},
+				},
 			},
 			format_on_save = {
 				timeout_ms = 500,
@@ -120,9 +129,9 @@ require("lazy").setup({
 		},
 	},
 	{
-		'MeanderingProgrammer/render-markdown.nvim',
+		"MeanderingProgrammer/render-markdown.nvim",
 		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
-		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {},
